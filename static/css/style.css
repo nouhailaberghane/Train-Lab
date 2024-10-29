@@ -1,0 +1,86 @@
+/* General styling for the body */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a1a1a;
+    color: #d3d3d3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    color: #00ffc6;
+    margin-bottom: 20px;
+}
+
+#classification-form {
+    background: #333333;
+    border: 2px solid #3269c7;
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+}
+
+button, input[type="number"], input[type="file"], select {
+    background-color: #1a1a1a;
+    color: #d3d3d3;
+    border: 1px solid #3269c7;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+button:hover, #add-layer:hover {
+    background-color: #3269c7;
+    color: #1a1a1a;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+
+
+#add-layer {
+    margin: 15px 0;
+    width: 100%;
+}
+
+.layer {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #00ffc6;
+    background: #222;
+}
+
+.layer label {
+    margin-right: 10px;
+    color: #00ffc6;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    color: #00ffc6;
+    font-weight: bold;
+}
+
+button[type="submit"] {
+    width: 100%;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    background: linear-gradient(90deg, #00ffc6, #3269c7);
+}
+
+button[type="button"] {
+    background: #444;
+    color: #d3d3d3;
+    border: none;
+    margin-left: 10px;
+}

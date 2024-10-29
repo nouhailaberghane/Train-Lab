@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Choisir le Type de Modèle</title>
+</head>
+<body>
+    <h1>Choisissez le Type de Modèle</h1>
+    <form action="/choose_model" method="POST">
+        <label>
+            <input type="radio" name="model_type" value="regression" required> Régression
+        </label>
+        <label>
+            <input type="radio" name="model_type" value="classification" required> Classification
+        </label>
+        <button type="submit">Continuer</button>
+    </form>
+</body>
+</html>
+

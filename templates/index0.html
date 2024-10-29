@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choix du Type de Données</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        function redirectToChoice() {
+            const dataType = document.querySelector('input[name="data-type"]:checked').value;
+            if (dataType === 'numerique') {
+                window.location.href = "{{ url_for('index') }}";  // Redirige vers la page index.html
+            } else if (dataType === 'image') {
+                window.location.href = "{{ url_for('train_image') }}";  // Redirige vers la page pour les données images
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Choisissez le Type de Données pour l'Entraînement</h1>
+    <form>
+        <div>
+            <input type="radio" id="numerique" name="data-type" value="numerique" required>
+            <label for="numerique">Données Numériques</label>
+        </div>
+        <div>
+            <input type="radio" id="image" name="data-type" value="image" required>
+            <label for="image">Données Images</label>
+        </div>
+        <button type="button" onclick="redirectToChoice()">Continuer</button>
+    </form>
+</body>
+</html>

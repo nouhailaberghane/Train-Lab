@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Classification Numérique</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        function addLayer() {
+            const container = document.getElementById('layers-container');
+            const newLayer = document.createElement('div');
+            newLayer.className = 'layer';
+            newLayer.innerHTML = `
+                <label>Unités :</label>
+                <input type="number" name="units[]" min="1" required>
+                <button type="button" onclick="removeLayer(this)">Supprimer</button>
+            `;
+            container.appendChild(newLayer);
+        }
+
+        function removeLayer(button) {
+            const layer = button.parentElement;
+            layer.parentElement.removeChild(layer);
+        }
+    </script>
+</head>
+<body>
+    <h1>Configurer le Modèle de Classification Numérique</h1>
+    <form id="classification-form" action="/train_classification" method="POST" enctype="multipart/form-data">
+        <!-- Charger les données -->
+        <div>
+            <label for="data-file">Charger vos données (CSV) :</label>
+            <input type="file" id="data-file" name="data-file" accept=".csv" required>
+        </div>
+
+        <!-- Configurer le réseau -->
+        <h2>Configurer le Réseau</h2>
+        <div id="layers-container">
+            <h3>Couches Denses</h3>
+            <div class="layer">
+                <label>Unités :</label>
+                <input type="number" name="units[]" min="1" required>
+            </div>
+        </div>
+        <button type="button" id="add-layer" onclick="addLayer()">Ajouter une couche</button>
+
+        <div>
+            <label for="activation-function">Fonction d'activation pour les couches cachées :</label>
+            <select id="activation-function" name="activation-function">
+                <option value="relu">ReLU</option>
+                <option value="sigmoid">Sigmoid</option>
+                <option value="tanh">Tanh</option>
+            </select>
+        </div>
+        <div>
+            <label for="output-activation">Fonction d'activation de sortie :</label>
+            <select id="output-activation" name="output-activation" required>
+                <option value="softmax">Softmax (multiclasse)</option>
+                <option value="sigmoid">Sigmoid (binaire)</option>
+            </select>
+        </div>
+        <div>
+            <label for="num-classes">Nombre de classes de sortie :</label>
+            <input type="number" id="num-classes" name="num-classes" min="2" required>
+        </div>
+        <div>
+            <label for="learning-rate">Taux d'apprentissage :</label>
+            <input type="number" id="learning-rate" name="learning-rate" step="0.01" value="0.01" required>
+        </div>
+
+        <!-- Lancer et visualiser l'entraînement -->
+        <button type="submit">Lancer l'Entraînement</button>
+    </form>
+</body>
+</html>
+
